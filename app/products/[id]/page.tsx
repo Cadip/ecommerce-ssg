@@ -11,6 +11,12 @@ export const dynamicParams = false
 export const revalidate = false
 export const fetchCache = 'force-cache'
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+    return {
+        alternates: { canonical: `/products/${params.id}` },
+    };
+}
+
 export async function generateStaticParams() {
     let allProducts: any[] = []
     let from = 0
